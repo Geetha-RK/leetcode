@@ -130,3 +130,13 @@ var findGCD = function(nums) {
 // Input: s = "a good   example"
 // Output: "example good a"
 // Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
+
+const reverseWords = (s) => {
+    return s.trim()                   // Trim leading and trailing spaces
+            .split(/\s+/)             // Split by one or more spaces
+            .reverse()                // Reverse the array of words
+            .join(' ');               // Join words with a single space
+}
+console.log(reverseWords("the sky is blue"));
+console.log(reverseWords(" Hello World "));
+console.log(reverseWords("a good   example"));
