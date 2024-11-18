@@ -26,6 +26,7 @@ var singleNumber = function(nums) {
     // Count occurrences of each number
     nums.map(num => {
         countMap.set(num, (countMap.get(num) || 0) + 1);
+        console.log(countMap);
     });
 
     // Find the number that occurs only once using Map's forEach
