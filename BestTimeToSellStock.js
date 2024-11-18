@@ -28,17 +28,55 @@ Pseudocode:
 */
 //Solution:
 var maxProfit = function(prices) {
-    let buyday = Math.min(...prices);
-    let buyindex = prices.indexOf(buyday);
-    console.log(buyindex);
-    let maxprofit = 0;
-    for(let i=buyindex+1;i<prices.length;i++){
-        if(prices[i] > maxprofit){
-            maxprofit = prices[i];
-        } 
+    let buyDay = Math.min(...prices);
+    let buyIndex = prices.indexOf(buyDay);
+    // console.log(buyindex);
+    let maxProfit = 0;
+    for (let i = buyIndex + 1; i < prices.length; i++) {
+        // Calculate profit by selling at the current price
+        let profit = prices[i] - buyDay;
+        // Update maxProfit if this profit is greater
+        if (profit > maxProfit) {
+            maxProfit = profit;
+        }
     }
-    return maxprofit;
+
+    return maxProfit;
 };
+
 
 console.log(maxProfit([7,1,5,3,6,4]))
 console.log(maxProfit([7,6,4,3,1]))
+console.log(maxProfit([1,2]))
+console.log(maxProfit([2,4,1])) //output : 2
+
+//Solution 2:
+
+var maxProfit = function(prices) {
+    let maxProfit = 0; // Initialize maxProfit
+    let minPrice = Infinity; // Start with a very high minimum price
+
+    // Loop through each price
+    for (let price of prices) {
+        // Update the minimum price if the current price is lower
+        if (price < minPrice) {
+            minPrice = price;
+        } else {
+            // Calculate profit if selling at the current price
+            let profit = price - minPrice;
+            // Update maxProfit if this profit is greater
+            maxProfit = Math.max(maxProfit, profit);
+        }
+    }
+
+    return maxProfit; // Return the maximum profit
+};
+
+// Test cases
+console.log(maxProfit([7, 1, 5, 3, 6, 4])); // Output: 5
+console.log(maxProfit([7, 6, 4, 3, 1])); // Output: 0
+console.log(maxProfit([1, 2])); // Output: 1
+console.log(maxProfit([2, 4, 1])); // Output: 2
+
+
+
