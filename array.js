@@ -141,6 +141,24 @@ console.log(reverseWords("the sky is blue"));
 console.log(reverseWords(" Hello World "));
 console.log(reverseWords("a good   example"));
 
+//Create a function that reverse a string
+//'Hi My name is Geetha' => 'ahteeG si eman yM iH'
 
+const reverseSentence = (str) => {
+    //check input:
+    if(!str || str.length <2 || typeof str !== 'string'){
+        return false;
+    }
+    //split() - converts a string into array of string.
+    //toString() - convert the array back into to the string.
+    // join() - convert the array back into the string.
+
+    const reverse =  str.split(" ");// [ 'Hi', 'My', 'name', 'is', 'Geetha' ]
+    const reverseWords = reverse.map((word) => word.split('').reverse().join('')); //[ 'iH', 'yM', 'eman', 'si', 'ahteeG' ]
+    console.log(reverseWords);
+
+    console.log(reverseWords.join(' ')); //iH yM eman si ahteeG
+}
+console.log(reverseSentence("Hi My name is Geetha"));
 
 

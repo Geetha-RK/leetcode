@@ -53,7 +53,18 @@ console.log(result1);  //[ '3', '4' ]
 const result2 = numbers.every((num) => num > 0);
 console.log(result2); //true
 
-//some: 
+//some: this method checks atleast one lement in an array satisfies the condition. 
+
+console.log(numbers.some((num) => num < 5)); //true
+console.log(numbers.some((num) => num > 50)); //false
+
+//mixed array:
+const mixedArray = [0,1,2,'hello',true];
+const result3 = mixedArray.some((element) => typeof element === 'string');
+console.log(result3); //true
+
+    const result4 = mixedArray.some((value) => !value); // !0 is true , because 0 is falsy.
+    console.log(result4);//true
 
 /*Falsy values in JavaScript:
 1.False
@@ -85,3 +96,17 @@ All values except falsy are truthy values.
     true
 */
 
+/* More methods:
+.fill
+.reduce
+.sort();
+.join
+.flat()
+.find
+.findIndex
+.toString
+.toLocaleString()
+.length
+.chatAt
+
+*/
