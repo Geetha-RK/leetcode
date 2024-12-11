@@ -40,11 +40,21 @@ Output: true
 
 var isValid = function(s) {
     let stack = [];
-    s.forEach(element => {
+
+    for(let element of s) {
+        // Push opening brackets onto the stack
         if(element === "(" || element === "[" || element ==="{"){
             stack.push(element);
         }
-    });
+        if((element === ")" && stack[stack.length-1] === "(") || (element === "]" && stack[stack.length-1] === "[") || (element === "}" && stack[stack.length-1] === "{")){
+            stack.pop();
+        }else if (element === ")" || element === "]" || element === "}") {
+            return false;
+        }
+        
+    };
+     // If the stack is empty, all parentheses were matched; otherwise, return false
+     return stack.length === 0;
 };
 
 console.log(isValid("(]"));//false
